@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongodb": "^6.18.0"
+  },
+  "name": "devtinder",
+  "version": "1.0.0",
+  "description": "tinder for dev",
+  "main": "Database.js",
+  "devDependencies": {},
+  "scripts": {
+    "start":"node src/app.js",
+    "dev":"nodemon src/app.js"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript"
+  ],
+  "author": "khushi thakur",
+  "license": "ISC"
+}
