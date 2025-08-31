@@ -1,17 +1,38 @@
-const express =require("express");
+const express = require("express");
+const connectDB = require("./config/Database");
+const app = express();
+const cookieparser = require("cookie-parser");
+const cors=require("cors");
 
-const app=express();
 
 
+app.use(cors({
+  origin: "http://localhost:5173", // React app
+  credentials: true,               // allow cookies
+}));
 
-app.use("/hello",(req,res)=>{
-    res.send("hello khushiiiiiiiiiiiiiiiii");
-})
 
-app.use("/test",(req,res)=>{
-    res.send("hello conradeee");
-})
+app.use(express.json());
+app.use(cookieparser());
 
-app.listen(3000,()=>{
-console.log("server is successfully listening");
-});
+const authRouter=require("./routes/auth");
+const profileRouter=require("./routes/profile");
+const requestRouter=require("./routes/request");
+const userRouter = require("./routes/user");
+
+app.use("/",authRouter);
+app.use("/",profileRouter);
+app.use("/",requestRouter);
+app.use("/",userRouter)
+
+
+connectDB()
+  .then(() => {
+    console.log("database connected successfully");
+    app.listen(3000, () => {
+      console.log("server is successfully listening");
+    });
+  })
+  .catch((err) => {
+    console.log("database cannot be connected");
+  });
