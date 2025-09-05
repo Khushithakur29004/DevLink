@@ -11,7 +11,7 @@ const userAuth = async (req, res, next) => {
     }
 
     //validate the token
-    const decodedMessage = await jwt.verify(token, "DEV@TINDER$780");
+    const decodedMessage = await jwt.verify(token,process.env.JWT_SECRET);
     const { _id } = decodedMessage;
 
     //find the token
