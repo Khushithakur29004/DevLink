@@ -22,3 +22,5 @@ userRouter
 -GET /user/connection
 -GET /user/requests/received
 -GET /user/feed - get you the profiles of other user on platform
+
+password -->  iYqyNwqZub5KICg4
